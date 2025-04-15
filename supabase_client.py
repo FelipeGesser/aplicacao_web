@@ -116,3 +116,22 @@ def buscar_tabelas_criadas(user_id, token):
     if response.status_code != 200:
         raise Exception(f"Erro: {response.json()}")
     return response.json()
+
+def salvar_tabela_criada(nome, df, user_id, token):
+    dados_json = df.to_json(orient='records')
+    url = f"{SUPABASE_URL}/rest/v1/tabelas_criadas"
+    headers = {
+        "apikey": SUPABASE_KEY,
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json",
+        "Prefer": "return=representation"
+    }
+    payload = {
+        "nome": nome,
+        "user_id": user_id,
+        "dados_json": json.loads(dados_json)
+    }
+    response = httpx.post(url, headers=headers, json=payload)
+    if response.status_code != 201:
+        raise Exception(f"Erro ao inserir: {response.json()}")
+    return response.json()
