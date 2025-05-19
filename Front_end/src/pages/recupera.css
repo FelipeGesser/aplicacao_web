@@ -1,0 +1,94 @@
+/* Centraliza a tela e define fundo escuro */
+html, body, #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a1a;
+    font-family: Arial, sans-serif;
+  }
+  
+  
+  /* Wrapper que envolve a caixa de recuperação */
+  .login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  /* Caixa de recuperação de senha */
+  .recupera-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;   /* centra verticalmente os itens dentro da caixa */
+    gap: 20px;
+    background-color: #2d2d2d;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  /* Título */
+  .recupera-container h2 {
+    color: white;
+    margin: 0;
+  }
+  
+  /* Estilização do input de e-mail */
+  .recupera-container input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 9999px;
+    background-color: #2563eb;
+    color: white;
+    text-align: center;
+    border: none;
+    outline: none;
+    font-size: 16px;
+  }
+  
+  /* Estilização do botão "Enviar Código" */
+  .recupera-container button {
+    padding: 12px 32px;
+    border-radius: 9999px;
+    background-color: #2563eb;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s;
+  }
+  
+  /* Hover do botão */
+  .recupera-container button:hover {
+    background-color: #1e40af;
+  }
+  
+  .recupera-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* centra horizontalmente os filhos */
+    gap: 20px;             /* espaço entre input e botão */
+    width: 100%;           /* para o input ocupar 100% do max-width do container */
+  }
+  
+  /* garante que input e button sejam blocos e centralizados */
+  .recupera-container input,
+  .recupera-container button {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .recupera-container .create-account {
+    color: #2563eb;       /* mesmo azul do background do botão */
+    margin-top: 16px;     /* separação acima, em vez de inline-style */ 
+    font-weight: bold;
+  }
