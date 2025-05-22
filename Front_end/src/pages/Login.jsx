@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import { loginUsuario } from "../funcoes/autenticaSenha"; // <- importa aqui
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
+  const navigate = useNavigate();
 
   const Logar = async () => {
     const { data, error } = await loginUsuario(email, senha);
@@ -15,8 +17,10 @@ const Login = () => {
       setErro(error.message);
       console.error("Erro ao logar:", error.message);
     } else {
-      alert("Login feito com sucesso:", data);
-      // redirecionar ou salvar token, etc.
+      // Redireciona para o dashboard do Streamlit com token e user_id na URL
+      const token = data.session?.access_token;
+      const userId = data.user?.id;
+      window.location.href = `http://localhost:8501?token=${token}&user_id=${userId}`;
     }
   };
 
